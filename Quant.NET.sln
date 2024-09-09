@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quant.NET", "Quant.NET\Quant.NET.csproj", "{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E55C4F34-1A35-4F9B-879A-9BACAC2A785B}
+	EndGlobalSection
+EndGlobal

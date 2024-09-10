@@ -17,19 +17,14 @@ public static class DateTimeExtensions
 
     /// <param name="dateTime"></param>
     /// <returns>UNIX timestamp in seconds</returns>
-    public static double DateTimeToUnixTimeStamp(this DateTime dateTime)
+    public static double ToUnixSeconds(this DateTime dateTime)
     {
         var epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0);
         var unixTimestamp = (dateTime - epoch).TotalSeconds;
         return unixTimestamp;
     }
 
-    /// <summary>
-    /// Assumes UNIX timestamp is UTC.
-    /// </summary>
-    /// <param name="dateTime"></param>
-    /// <returns></returns>
-    public static DateTime UnixTimeStampToDateTimeUTC(this double unixTimeStampSeconds)
+    public static DateTime ToDateTime(this double unixTimeStampSeconds)
     {
         // Unix timestamp is seconds past epoch
         var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
@@ -37,14 +32,7 @@ public static class DateTimeExtensions
         return dateTime;
     }
 
-    public static DateTime UnixTimeStampToDateTime(this double unixTimeStampSeconds)
-    {
-        // Unix timestamp is seconds past epoch
-        var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-        dateTime = dateTime.AddSeconds(unixTimeStampSeconds).ToLocalTime();
-        return dateTime;
-    }
-
+    /*
     public static DateTime UnixTimeStampToDateTime(this long unixTimeStampNanoseconds)
     {
         // Unix timestamp is seconds past epoch
@@ -58,11 +46,12 @@ public static class DateTimeExtensions
     /// </summary>
     /// <param name="dateTime"></param>
     /// <returns></returns>
-    public static DateTime UnixTimeStampToDateTimeUTC(this long unixTimeStampNanoseconds)
+    public static DateTime ToDateTime(this long unixTimeStampNanoseconds)
     {
         // Unix timestamp is seconds past epoch
         var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         dateTime = dateTime.AddMicroseconds(unixTimeStampNanoseconds / 1000d);
         return dateTime;
     }
+    */
 }

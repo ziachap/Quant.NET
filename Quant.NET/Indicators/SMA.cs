@@ -1,4 +1,4 @@
-﻿namespace Quant.NET.DataFrame;
+﻿namespace Quant.NET.Indicators;
 
 public class SMA
 {

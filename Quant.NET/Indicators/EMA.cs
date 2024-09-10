@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Quant.NET.DataFrame;
+namespace Quant.NET.Indicators;
 
 /// <summary>
 /// Exponential moving average
@@ -14,7 +14,8 @@ public sealed class EMA
 
     public EMA(int windowSize)
     {
-        AdjustWindowSize(windowSize);
+        _windowSize = windowSize;
+        _alpha = 2.0 / (_windowSize + 1);
     }
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -30,12 +31,6 @@ public sealed class EMA
         _average = Math.FusedMultiplyAdd(x - _average, _alpha, _average);
 
         return _average;
-    }
-
-    public void AdjustWindowSize(int windowSize)
-    {
-        _windowSize = windowSize;
-        _alpha = 2.0 / (_windowSize + 1);
     }
 
     public double? GetValue()

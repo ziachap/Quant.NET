@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Quant.NET.Indicators;
 
 namespace Quant.NET.DataFrame;
 

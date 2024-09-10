@@ -5,16 +5,16 @@ namespace Quant.NET.DataFrame;
 
 public class Row : IEnumerable<KeyValuePair<string, double>>
 {
-    private readonly Dictionary<string, double> _columns;
+    private readonly OrderedDictionary<string, double> _columns;
 
     public event Action<string>? OnInitializeColumn;
 
     public Row(IEnumerable<string> columns)
     {
-        _columns = columns.ToDictionary(x => x, _ => 0d);
+        _columns = columns.ToOrderedDictionary(x => x, _ => 0d);
     }
 
-    protected Row(Dictionary<string, double> columns)
+    protected Row(OrderedDictionary<string, double> columns)
     {
         _columns = columns;
     }
@@ -39,6 +39,12 @@ public class Row : IEnumerable<KeyValuePair<string, double>>
     {
         _columns[column] = 0d;
     }
+
+    internal void RemoveColumn(string column)
+    {
+        _columns.Remove(column);
+    }
+
 
     internal bool ContainsColumn(string column)
     {

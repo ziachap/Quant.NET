@@ -92,9 +92,15 @@ namespace Quant.NET.DataFrame
                 foreach (var idx in parseableIndexes)
                 {
                     var header = headers[idx];
-                    var value = double.Parse(values[idx]);
+                    if (double.TryParse(values[idx], out var value))
+                    {
+                        row[header] = value;
+                    }
+                    else
+                    {
+                        row[header] = 0;
+                    }
 
-                    row[header] = value;
                 }
             }
 
@@ -133,6 +139,11 @@ namespace Quant.NET.DataFrame
         {
             var orderedRows = _rows.OrderBy(selector).ToList();
             return new Frame(orderedRows, _schema);
+        }
+
+        public Frame Reverse()
+        {
+            return new Frame(_rows.AsEnumerable().Reverse().ToList(), _schema);
         }
 
         public Frame Clone() => new(_rows, _schema);
@@ -213,7 +224,11 @@ namespace Quant.NET.DataFrame
 
         public Row CreateRow()
         {
-            var row = new Row(_schema);
+            var tail = _rows.LastOrDefault();
+
+            var row = new Row(_schema, tail, null);
+
+            if (tail != null) tail.Next = row;
 
             row.OnInitializeColumn += CreateColumn;
 
@@ -231,6 +246,11 @@ namespace Quant.NET.DataFrame
             {
                 row.InitializeColumn(column);
             }
+        }
+
+        public bool ContainsColumn(string column)
+        {
+            return _schema.Contains(column);
         }
 
         public void Drop(params string[] columns)
@@ -259,6 +279,21 @@ namespace Quant.NET.DataFrame
             }
 
             Drop(column);
+        }
+
+        public Column EnsembleSignal(double crossoverThreshold, params string[] columns)
+        {
+            var signals = columns.Select(column => this[column].Select(x =>
+            {
+                if (x > crossoverThreshold) return 1;
+                if (x < crossoverThreshold) return -1;
+                return 0;
+            }).ToColumn()).ToList();
+
+            var result = signals.First();
+            foreach (var column in signals.Skip(1)) result = result + column;
+
+            return result / signals.Count;
         }
 
         public Frame TakeLastWhile(Predicate<Row> predicate)

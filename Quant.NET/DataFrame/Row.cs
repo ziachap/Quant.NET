@@ -6,20 +6,26 @@ namespace Quant.NET.DataFrame;
 public class Row : IEnumerable<KeyValuePair<string, double>>
 {
     private readonly OrderedDictionary<string, double> _columns;
+    public Row? Previous { get; internal set; }
+    public Row? Next { get; internal set; }
 
     public event Action<string>? OnInitializeColumn;
 
-    public Row(IEnumerable<string> columns)
+    public Row(IEnumerable<string> columns, Row? previous, Row? next)
     {
         _columns = columns.ToOrderedDictionary(x => x, _ => 0d);
+        Previous = previous;
+        Next = next;
     }
 
-    protected Row(OrderedDictionary<string, double> columns)
+    protected Row(OrderedDictionary<string, double> columns, Row? previous, Row? next)
     {
         _columns = columns;
+        Previous = previous;
+        Next = next;
     }
 
-    public Row Clone() => new(_columns);
+    public Row Clone() => new(_columns, Previous, Next);
 
     public double this[string column]
     {

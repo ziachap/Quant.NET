@@ -29,7 +29,13 @@ namespace Quant.NET.Backtest
             return fr;
         }
         
-        public static EquityMetrics AsEquityMetrics(this Column equitycolumn)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="equitycolumn"></param>
+        /// <param name="annualTradingPeriods">Number of data points in a year. Used to annualize the ratios.</param>
+        /// <returns></returns>
+        public static EquityMetrics AsEquityMetrics(this Column equitycolumn, int annualTradingPeriods = 252)
         {
             var returns = equitycolumn.DiffPct();
 
@@ -37,6 +43,9 @@ namespace Quant.NET.Backtest
 
             var sharpeRatio = ev / returns.StandardDeviation();
             var sortinoRatio = ev / returns.Where(x => x < 0).ToColumn().StandardDeviation();
+
+            sharpeRatio *= Math.Sqrt(annualTradingPeriods);
+            sortinoRatio *= Math.Sqrt(annualTradingPeriods);
 
             return new EquityMetrics()
             {

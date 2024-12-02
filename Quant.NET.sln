@@ -5,7 +5,9 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quant.NET", "Quant.NET\Quant.NET.csproj", "{EADA3851-D2E6-4EE3-BB68-7647B52AB27B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HogAlgo", "HogAlgo\HogAlgo.csproj", "{B869BDFB-687D-42F1-A664-72E2961DCDC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HogAlgo", "HogAlgo\HogAlgo.csproj", "{B869BDFB-687D-42F1-A664-72E2961DCDC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepWeightedMomentum", "DeepWeightedMomentum\DeepWeightedMomentum.csproj", "{10740624-062B-4533-814A-82FC25FDA870}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B869BDFB-687D-42F1-A664-72E2961DCDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B869BDFB-687D-42F1-A664-72E2961DCDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B869BDFB-687D-42F1-A664-72E2961DCDC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10740624-062B-4533-814A-82FC25FDA870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10740624-062B-4533-814A-82FC25FDA870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10740624-062B-4533-814A-82FC25FDA870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10740624-062B-4533-814A-82FC25FDA870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

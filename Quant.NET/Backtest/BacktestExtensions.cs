@@ -28,9 +28,9 @@ namespace Quant.NET.Backtest
 
             return fr;
         }
-        
+
         /// <summary>
-        /// 
+        /// Returns a metrics object with key metrics based on the provided equity curve (Expected Value, Sharpe, Sortino).
         /// </summary>
         /// <param name="equitycolumn"></param>
         /// <param name="annualTradingPeriods">Number of data points in a year. Used to annualize the ratios.</param>

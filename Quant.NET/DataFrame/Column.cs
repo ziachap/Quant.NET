@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Linq;
-using Quant.NET.Backtest;
 using Quant.NET.Indicators;
 using Skender.Stock.Indicators;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Quant.NET.DataFrame;
 
@@ -367,7 +364,9 @@ public class Column : IEnumerable<double>
     }
 
     #endregion
-
+    
+    // TODO: constant * Column (left-hand constant)
+    
     public IEnumerator<double> GetEnumerator()
     {
         return _values.AsEnumerable().GetEnumerator();
